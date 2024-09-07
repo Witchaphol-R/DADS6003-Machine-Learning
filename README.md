@@ -1,1 +1,2 @@
-# DADS6003-Machine-Learning-Homework2-1
+# DADS6003 Machine Learning Homework Directory
+A directory for ease of submission.
