@@ -200,7 +200,7 @@ if __name__ == "__main__":
   parser.add_argument('--mlp_pretrain', nargs='?', default='', help='Specify the pretrain model file for MLP part.')
   parser.add_argument('--top_k', type=int, default=10, help='Number of top recommendations to consider.')
   parser.add_argument('--out', type=int, default=1, help='Whether to save the trained model.')
-  parser.add_argument('--seed', type=int, default=42, help='Random seed.')
+  parser.add_argument('--seed', type=int, default=22004, help='Random seed.')
   args = parser.parse_args()
   set_seed(args.seed)
 

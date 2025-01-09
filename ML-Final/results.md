@@ -1,3 +1,18 @@
+Commands:  
+```python GMF_torch.py --dataset ml-1m --epochs 20 --batch_size 256 --num_factors 8 --regs [0,0] --num_neg 4 --lr 0.001 --learner adam --verbose 1 --out 1```  
+
+```python MLP_torch.py --dataset ml-1m --epochs 20 --batch_size 256 --layers [64,32,16,8] --reg_layers [0,0,0,0] --num_neg 4 --lr 0.001 --learner adam --verbose 1 --out 1```  
+
+```python NeuMF_torch.py --dataset ml-1m --epochs 20 --batch_size 256 --num_factors 8 --layers [64,32,16,8] --reg_mf 0 --reg_layers [0,0,0,0] --num_neg 4 --lr 0.001 --learner adam --verbose 1 --out 1```  
+
+```python NeuMF_torch.py --dataset ml-1m --epochs 20 --batch_size 256 --num_factors 8 --layers [64,32,16,8] --num_neg 4 --lr 0.001 --learner adam --verbose 1 --out 1 --mf_pretrain BestModel/best_gmf_model.pth --mlp_pretrain BestModel/best_mlp_model.pth```  
+
+```python NeuMF_torch.py --dataset ml-1m --epochs 20 --batch_size 256 --num_factors 8 --layers [64,32,16,8] --reg_mf 0 --reg_layers [0,0,0,0] --num_neg 4 --lr 0.001 --learner adam --verbose 1 --out 1```
+
+Dropout Regularization - Generalize model preventing overfitting (Reducing the weight)
+Batch Normalization - For stability, prevent underflow and may improve performance by using low numbers (data rescaling)
+Learning Rate Scheduling - Dynamically reduce learning rate
+
 Metrics:
 - Hit Rate (HR) measures the proportion of times the true item appears in the top-K recommendations.
 - Loss (binary cross-entropy) measures the difference between the predicted probabilities and the actual binary labels.
@@ -7,6 +22,7 @@ GMF HR: 0.0025, Best NDCG: 0.0011
 MLP HR: 0.0227, Best NDCG: 0.0094
 NeuMF (standard) HR: 0.0235, Best NDCG: 0.0116
 NeuMF (pretrained) HR: 0.0240, Best NDCG: 0.0108
+NeuMF (adjusted) HR: 0.0262, Best NDCG: 0.0123
 
 Best Model: NeuMF (pretrained)
 Best Ranking: NeuMF (standard)
@@ -197,3 +213,46 @@ Epoch 19: HR = 0.0237, NDCG = 0.0108
 Epoch 20/20, Loss: 0.35379826820502847
 Epoch 20: HR = 0.0230, NDCG = 0.0102
 Best HR: 0.0240, Best NDCG: 0.0108
+
+# NewMF (adjusted)
+Epoch 1/20, Loss: 0.6437993281978672
+Epoch 1: HR = 0.0036, NDCG = 0.0017
+Epoch 2/20, Loss: 0.502696628035125
+Epoch 2: HR = 0.0058, NDCG = 0.0025
+Epoch 3/20, Loss: 0.48945841496273623
+Epoch 3: HR = 0.0094, NDCG = 0.0042
+Epoch 4/20, Loss: 0.4765724885766789
+Epoch 4: HR = 0.0108, NDCG = 0.0046
+Epoch 5/20, Loss: 0.4646037248736721
+Epoch 5: HR = 0.0118, NDCG = 0.0052
+Epoch 6/20, Loss: 0.44297836468381396
+Epoch 6: HR = 0.0126, NDCG = 0.0054
+Epoch 7/20, Loss: 0.42920561538914503
+Epoch 7: HR = 0.0124, NDCG = 0.0069
+Epoch 8/20, Loss: 0.41462573838435995
+Epoch 8: HR = 0.0171, NDCG = 0.0088
+Epoch 9/20, Loss: 0.3952200304148561
+Epoch 9: HR = 0.0214, NDCG = 0.0104
+Epoch 10/20, Loss: 0.393292467725479
+Epoch 10: HR = 0.0237, NDCG = 0.0113
+Epoch 11/20, Loss: 0.3865415236707461
+Epoch 11: HR = 0.0242, NDCG = 0.0116
+Epoch 12/20, Loss: 0.375479393338753
+Epoch 12: HR = 0.0242, NDCG = 0.0117
+Epoch 13/20, Loss: 0.37886641465001186
+Epoch 13: HR = 0.0262, NDCG = 0.0123
+Epoch 14/20, Loss: 0.3741841803667909
+Epoch 14: HR = 0.0238, NDCG = 0.0119
+Epoch 15/20, Loss: 0.3702968386775356
+Epoch 15: HR = 0.0240, NDCG = 0.0119
+Epoch 16/20, Loss: 0.36337882937011073
+Epoch 16: HR = 0.0243, NDCG = 0.0116
+Epoch 17/20, Loss: 0.36412986279544185
+Epoch 17: HR = 0.0233, NDCG = 0.0111
+Epoch 18/20, Loss: 0.36165532772823916
+Epoch 18: HR = 0.0238, NDCG = 0.0113
+Epoch 19/20, Loss: 0.36093722132302947
+Epoch 19: HR = 0.0230, NDCG = 0.0110
+Epoch 20/20, Loss: 0.3595528925879527
+Epoch 20: HR = 0.0235, NDCG = 0.0114
+Best HR: 0.0262, Best NDCG: 0.0123
