@@ -10,7 +10,7 @@ Commands:
 ```python NeuMF_torch.py --dataset ml-1m --epochs 20 --batch_size 256 --num_factors 8 --layers [64,32,16,8] --reg_mf 0 --reg_layers [0,0,0,0] --num_neg 4 --lr 0.001 --learner adam --verbose 1 --out 1```
 
 Dropout Regularization - Generalize model preventing overfitting (Reducing the weight)
-Batch Normalization - For stability, prevent underflow and may improve performance by using low numbers (data rescaling)
+Layer Normalization - For stability, prevent underflow and may improve performance by using low numbers (data rescaling)
 Learning Rate Scheduling - Dynamically reduce learning rate
 
 Metrics:
